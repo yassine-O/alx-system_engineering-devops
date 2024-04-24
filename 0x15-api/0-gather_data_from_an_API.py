@@ -15,9 +15,10 @@ if __name__ == "__main__":
     done = 0
     for task in todos:
         total += 1
-        if task['completed']:
+        if task.get('completed'):
             done += 1
-    print(f"Employee {employee['name']} is done with tasks({done}/{total}):")
+    name = employee.get('name')
+    print(f"Employee {name} is done with tasks({done}/{total}):")
     for task in todos:
-        if task['completed']:
-            print(f"\t {task['title']}")
+        if task.get('completed'):
+            print(f"\t {task.get('title')}")
