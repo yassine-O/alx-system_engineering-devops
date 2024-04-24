@@ -7,18 +7,18 @@ import sys
 
 if __name__ == "__main__":
     id = sys.argv[1]
-    r = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
-    employee = r.json()
-    r = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}/todos')
-    todos = r.json()
+    url = f'https://jsonplaceholder.typicode.com/users/{id}'
+    employee = requests.get(url).json()
+    url = f'https://jsonplaceholder.typicode.com/users/{id}/todos'
+    todos = requests.get(url).json()
     total = 0
-    done = 0
+    done_tasks = []
     for task in todos:
         total += 1
         if task.get('completed'):
-            done += 1
+            done_tasks.append(task)
     name = employee.get('name')
+    done = len(done_tasks)
     print(f"Employee {name} is done with tasks({done}/{total}):")
-    for task in todos:
-        if task.get('completed'):
-            print(f"\t {task.get('title')}")
+    for task in done_tasks:
+        print(f"\t {task.get('title')}")
