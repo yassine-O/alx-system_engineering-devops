@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Installs firewall; block all incoming except 22, 443, 80
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+sudo ufw enable
