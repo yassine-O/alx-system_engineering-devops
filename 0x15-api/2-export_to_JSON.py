@@ -13,7 +13,7 @@ if __name__ == "__main__":
     url = f'https://jsonplaceholder.typicode.com/users/{id}/todos'
     todos = requests.get(url).json()
     tasks = []
-    name = employee.get('name')
+    name = employee.get('username')
     for todo in todos:
         task = {"task": todo.get('title'),
                 "completed": todo.get('completed'),
